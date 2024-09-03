@@ -1,0 +1,18 @@
+# User Email
+email: Tamara.C.Swientek@student.uts.edu.au
+
+# Path to Output Files
+outdir: results
+
+# Prefix for Analysis Output
+prefix: test
+
+# Base Directory for Log Files
+base_log_outdir: logs
+
+# Path to Genomic Data 
+genome_path: data/reads
+
+# Module Selection
+modules:
+  run_fastp: Yes

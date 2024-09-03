@@ -1,0 +1,19 @@
+import re
+import subprocess
+import os
+import platform
+
+# Path to Config File
+configfile: "config/config.yaml"
+
+# Define Variable for Input & Output
+outdir = config["outdir"]
+prefix = config["prefix"]
+(sample_ids,) = glob_wildcards(config["genome_path"]+"/{sample}.R1.fastq.gz")
+
+rule all:
+    input:
+        expand(config["outdir"]+"/{prefix}/fastp/{sample}.R1.fastq.gz",sample=sample_ids,prefix=prefix) if config["modules"]["run_fastp"] else [],
+
+if config["modules"]["run_fastp"]:
+    include: "rules/read_filtering.smk"

@@ -16,3 +16,4 @@ genome_path: data/reads
 # Module Selection
 modules:
   run_fastp: Yes
+  run_shovill: Yes

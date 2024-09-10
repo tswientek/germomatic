@@ -14,6 +14,9 @@ prefix = config["prefix"]
 rule all:
     input:
         expand(config["outdir"]+"/{prefix}/fastp/{sample}.R1.fastq.gz",sample=sample_ids,prefix=prefix) if config["modules"]["run_fastp"] else [],
+        expand(config["outdir"]+"/{prefix}/shovill/assemblies/{sample}.fasta",sample=sample_ids,prefix=prefix) if config["modules"]["run_shovill"] else [],
 
 if config["modules"]["run_fastp"]:
     include: "rules/read_filtering.smk"
+if config["modules"]["run_shovill"]:
+    include: "rules/genome_assembly.smk"
